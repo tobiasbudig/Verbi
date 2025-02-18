@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voice Assistant</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="video-container">
+        <video id="video" width="100%" height="100%" autoplay loop muted>
+          <source
+            src="{{ url_for('static', filename='avatar_videos/pause_video.mp4') }}"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="controls">
+        <button
+          id="start-button"
+          data-talking-video="{{ url_for('static', filename='avatar_videos/talking_video.mp4') }}"
+          data-pause-video="{{ url_for('static', filename='avatar_videos/pause_video.mp4') }}"
+        >
+          Start
+        </button>
+        <button
+          id="stop-button"
+          data-pause-video="{{ url_for('static', filename='avatar_videos/pause_video.mp4') }}"
+        >
+          Finish
+        </button>
+      </div>
+      <div class="log-panel">
+        <h2>Log</h2>
+        <div id="log"></div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+  </body>
+</html>
